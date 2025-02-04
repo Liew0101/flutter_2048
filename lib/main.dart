@@ -18,6 +18,7 @@ void main() async {
   Hive.registerAdapter(BoardAdapter());
   runApp(const ProviderScope(
     child: MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: '2048',
       home: Game(),
     ),
