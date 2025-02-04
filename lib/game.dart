@@ -60,6 +60,15 @@ class _GameState extends ConsumerState<Game>
     WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
+void main() {
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,  // This removes the debug banner
+      home: const Game(),  // Replace this with your Game widget
+    ),
+  );
+}
+
 
   @override
   Widget build(BuildContext context) {
