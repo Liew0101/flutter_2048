@@ -80,14 +80,14 @@ class _GameState extends ConsumerState<Game>
         },
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: const Color.fromARGB(255, 156, 155, 136),
+            backgroundColor: const Color.fromARGB(255, 255, 244, 181),
             title: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Icon(
-                  Icons.numbers, // Number icon
+                  Icons.filter_2, // Number icon
                   size: 32.0,
-                  color: Colors.white,
+                  color: Color.fromARGB(255, 148, 146, 124),
                 ),
                 const SizedBox(width: 8.0),
                 Text(
@@ -155,21 +155,21 @@ class _GameState extends ConsumerState<Game>
               Container(
                 padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05, vertical: 12.0), // Adaptive padding based on screen width
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 156, 155, 136),
+                  color: const Color.fromARGB(255, 255, 244, 181),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Icon(
-                      Icons.filter_9_plus,
-                      color: Colors.white,
+                      Icons.info_outline,
+                      color: Colors.black,
                     ),
                     const SizedBox(width: 8.0),
                     const Text(
-                      'Game Instructions',
+                      'Create By Kanchai Khomsuwan',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -177,7 +177,7 @@ class _GameState extends ConsumerState<Game>
                     IconButton(
                       icon: const Icon(
                         Icons.settings,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                       onPressed: () {
                         // Handle settings
