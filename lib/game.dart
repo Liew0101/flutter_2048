@@ -80,7 +80,7 @@ class _GameState extends ConsumerState<Game>
           }
         },
         child: Scaffold(
-          backgroundColor: const Color.fromARGB(255, 255, 240, 155),
+          backgroundColor: const Color.fromARGB(255, 228, 255, 155),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
