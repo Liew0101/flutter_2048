@@ -80,7 +80,7 @@ class _GameState extends ConsumerState<Game>
           }
         },
         child: Scaffold(
-          backgroundColor: const Color.fromARGB(255, 185, 156, 102),
+          backgroundColor: const Color.fromARGB(255, 255, 236, 153),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -93,7 +93,7 @@ class _GameState extends ConsumerState<Game>
                     const Text(
                       '2048',
                       style: TextStyle(
-                          color: Color.fromARGB(255, 255, 79, 79),
+                          color: Color.fromARGB(255, 156, 155, 136),
                           fontWeight: FontWeight.bold,
                           fontSize: 52.0),
                     ),
