@@ -61,6 +61,9 @@ class _GameState extends ConsumerState<Game>
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+    final isPortrait = screenSize.height > screenSize.width;
+
     return RawKeyboardListener(
       autofocus: true,
       focusNode: FocusNode(),
@@ -87,11 +90,11 @@ class _GameState extends ConsumerState<Game>
                   color: Colors.white,
                 ),
                 const SizedBox(width: 8.0),
-                const Text(
+                Text(
                   'Add numbers',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 32.0,
+                    fontSize: isPortrait ? 32.0 : 28.0, // Dynamic font size based on orientation
                   ),
                 ),
               ],
@@ -107,8 +110,6 @@ class _GameState extends ConsumerState<Game>
           ),
           backgroundColor: const Color.fromARGB(255, 255, 236, 153),
           body: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -137,54 +138,55 @@ class _GameState extends ConsumerState<Game>
                 ),
               ),
               const SizedBox(height: 32.0),
-              Stack(
-                children: [
-                  const EmptyBoardWidget(),
-                  TileBoardWidget(
-                    moveAnimation: _moveAnimation,
-                    scaleAnimation: _scaleAnimation,
+              Expanded(  // Expanded to take up available space between the app bar and footer
+                child: Center(
+                  child: Stack(
+                    children: [
+                      const EmptyBoardWidget(),
+                      TileBoardWidget(
+                        moveAnimation: _moveAnimation,
+                        scaleAnimation: _scaleAnimation,
+                      ),
+                    ],
                   ),
-                ],
+                ),
+              ),
+              // Footer with Spacer to keep it at the bottom
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05, vertical: 12.0), // Adaptive padding based on screen width
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 156, 155, 136),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.filter_9_plus,
+                      color: Colors.white,
+                    ),
+                    const SizedBox(width: 8.0),
+                    const Text(
+                      'Game Instructions',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(width: 16.0),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.settings,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        // Handle settings
+                      },
+                    ),
+                  ],
+                ),
               ),
             ],
-          ),
-          // Add a Footer
-          bottomNavigationBar: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 156, 155, 136),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(
-                    Icons.info_outline,
-                    color: Colors.white,
-                  ),
-                  const SizedBox(width: 8.0),
-                  const Text(
-                    'Game Instructions',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(width: 16.0),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.settings,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      // Handle settings
-                    },
-                  ),
-                ],
-              ),
-            ),
           ),
         ),
       ),
