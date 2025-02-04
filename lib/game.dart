@@ -77,14 +77,25 @@ class _GameState extends ConsumerState<Game>
         },
         child: Scaffold(
           appBar: AppBar(
-            title: const Text(
-              '2048',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 32.0,
-              ),
-            ),
             backgroundColor: const Color.fromARGB(255, 156, 155, 136),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.numbers, // Number icon
+                  size: 32.0,
+                  color: Colors.white,
+                ),
+                const SizedBox(width: 8.0),
+                const Text(
+                  'Add numbers',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 32.0,
+                  ),
+                ),
+              ],
+            ),
             actions: [
               IconButton(
                 icon: const Icon(Icons.refresh),
@@ -136,6 +147,44 @@ class _GameState extends ConsumerState<Game>
                 ],
               ),
             ],
+          ),
+          // Add a Footer
+          bottomNavigationBar: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 156, 155, 136),
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.info_outline,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(width: 8.0),
+                  const Text(
+                    'Game Instructions',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(width: 16.0),
+                  IconButton(
+                    icon: const Icon(
+                      Icons.settings,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      // Handle settings
+                    },
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),
