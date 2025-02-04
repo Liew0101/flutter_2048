@@ -76,6 +76,24 @@ class _GameState extends ConsumerState<Game>
           }
         },
         child: Scaffold(
+          appBar: AppBar(
+            title: const Text(
+              '2048',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 32.0,
+              ),
+            ),
+            backgroundColor: const Color.fromARGB(255, 156, 155, 136),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.refresh),
+                onPressed: () {
+                  ref.read(boardManager.notifier).newGame();
+                },
+              ),
+            ],
+          ),
           backgroundColor: const Color.fromARGB(255, 255, 236, 153),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -86,35 +104,21 @@ class _GameState extends ConsumerState<Game>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      '2048',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 156, 155, 136),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 52.0,
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                    const ScoreBoard(),
+                    Row(
                       children: [
-                        const ScoreBoard(),
-                        const SizedBox(height: 32.0),
-                        Row(
-                          children: [
-                            ButtonWidget(
-                              icon: Icons.undo,
-                              onPressed: () {
-                                ref.read(boardManager.notifier).undo();
-                              },
-                            ),
-                            const SizedBox(width: 16.0),
-                            ButtonWidget(
-                              icon: Icons.refresh,
-                              onPressed: () {
-                                ref.read(boardManager.notifier).newGame();
-                              },
-                            ),
-                          ],
+                        ButtonWidget(
+                          icon: Icons.undo,
+                          onPressed: () {
+                            ref.read(boardManager.notifier).undo();
+                          },
+                        ),
+                        const SizedBox(width: 16.0),
+                        ButtonWidget(
+                          icon: Icons.refresh,
+                          onPressed: () {
+                            ref.read(boardManager.notifier).newGame();
+                          },
                         ),
                       ],
                     ),
