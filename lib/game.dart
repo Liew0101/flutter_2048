@@ -6,7 +6,6 @@ import 'components/button.dart';
 import 'components/empy_board.dart';
 import 'components/score_board.dart';
 import 'components/tile_board.dart';
-import 'const/colors.dart';
 import 'managers/board.dart';
 
 class Game extends ConsumerStatefulWidget {
